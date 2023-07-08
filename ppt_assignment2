@@ -1,0 +1,391 @@
+Q.1.
+#mean sales of RegionA
+(10+15+12+8+14)/5
+11.8
+#mean sales of RegionB
+(18+20+16+22+25)/5
+20.2
+
+
+Q.2.
+Value: 2, Count: 2
+Value: 3, Count: 2
+Value: 4, Count: 3
+Value: 5, Count: 3
+
+both 4 and 5 have the highest frequency that is 3.Therefore, the mode of the survey responses is 4 and 5.
+
+
+Q.3.
+For Department A:
+Salary data: [5000, 6000, 5500, 7000]
+
+Arranging the data in ascending order: [5000, 5500, 6000, 7000]
+Median salary for Department A = (5500 + 6000) / 2
+= 11500 / 2
+= 5750
+
+For Department B:
+Salary data: [4500, 5500, 5800, 6000, 5200]
+
+Arranging the data in ascending order: [4500, 5200, 5500, 5800, 6000]
+the median salary for Department B is 5500.
+
+Thus, the median salary for Department A is 5750 and for Department B is 5500.
+
+
+Q.4.
+Stock prices: [25.5, 24.8, 26.1, 25.3, 24.9]
+
+ The maximum value in the data set: 26.1
+ The minimum value in the data set: 24.8
+
+ Range = Maximum value - Minimum value
+= 26.1 - 24.8
+= 1.3
+
+Therefore, the range of the stock prices is 1.3.
+
+
+Q.5.
+import scipy.stats as stats
+group_a = [85, 90, 92, 88, 91]
+group_b = [82, 88, 90, 86, 87]
+
+# Perform independent samples t-test
+t_statistic, p_value = stats.ttest_ind(group_a, group_b)
+
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
+
+#output
+t-statistic: 1.4312528946642733
+p-value: 0.19023970239078333
+​
+
+Q.6.
+import numpy as np
+
+advertising_expenditure = [10, 15, 12, 8, 14]
+sales = [25, 30, 28, 20, 26]
+
+# Calculate the correlation coefficient
+correlation_coefficient = np.corrcoef(advertising_expenditure, sales)[0, 1]
+
+print("Correlation coefficient:", correlation_coefficient)
+
+#output
+Correlation coefficient:  0.8757511375750132
+
+
+Q.7.
+import numpy as np 
+
+heights = np.array([160, 170, 165, 155, 175, 180, 170])
+
+# Calculate the standard deviation
+standard_deviation = np.std(heights)
+
+# Print the standard deviation
+print("Standard deviation:", standard_deviation)
+
+#output
+Standard deviation: 7.953
+
+
+Q.8.
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Employee tenure (in years) and Job satisfaction
+employee_tenure = np.array([2, 3, 5, 4, 6, 2, 4]).reshape(-1, 1)
+job_satisfaction = np.array([7, 8, 6, 9, 5, 7, 6])
+
+# Create a linear regression model
+model = LinearRegression()
+
+# Fit the model with the data
+model.fit(employee_tenure, job_satisfaction)
+
+# Get the coefficients (slope and intercept)
+slope = model.coef_[0]
+intercept = model.intercept_
+
+# Print the coefficients
+print("Slope (Coefficient):", slope)
+print("Intercept:", intercept)
+
+#output
+Slope (Coefficient): -0.4680851063829786
+Intercept: 8.595744680851062
+
+
+Q.9.
+import scipy.stats as stats
+
+# Recovery times for Medication A and Medication B
+medication_a = [10, 12, 14, 11, 13]
+medication_b = [15, 17, 16, 14, 18]
+
+# Perform one-way ANOVA
+f_statistic, p_value = stats.f_oneway(medication_a, medication_b)
+
+# Print the results
+print("F-statistic:", f_statistic)
+print("p-value:", p_value)
+
+#output
+F-statistic: 16.0
+p-value: 0.003949772803445326
+
+
+Q.10.
+import numpy as np
+
+# Feedback ratings
+ratings = np.array([8, 9, 7, 6, 8, 10, 9, 8, 7, 8])
+
+# Calculate the 75th percentile
+percentile_75 = np.percentile(ratings, 75)
+
+print("75th percentile:", percentile_75)
+
+#output
+75th percentile: 8.75
+
+
+Q.11.
+import numpy as np
+from scipy import stats
+
+# Weight data
+weights = np.array([10.2, 9.8, 10.0, 10.5, 10.3, 10.1])
+
+# Hypothesized mean
+hypothesized_mean = 10
+
+# Perform one-sample t-test
+t_statistic, p_value = stats.ttest_1samp(weights, hypothesized_mean)
+
+
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
+
+#output
+t-statistic: 1.5126584522688367
+p-value: 0.19077595151110102
+
+
+Q.12.
+import numpy as np
+from scipy import stats
+
+# Click-through rates for Design A and Design B
+design_a = np.array([100, 120, 110, 90, 95])
+design_b = np.array([80, 85, 90, 95, 100])
+
+# Perform chi-square test
+chi2_statistic, p_value = stats.chisquare(design_a, design_b)
+
+print("Chi-square statistic:", chi2_statistic)
+print("p-value:", p_value)
+
+#output
+Chi-square statistic: 5.0
+p-value: 0.4098235222538305
+
+
+Q.13.
+# Satisfaction scores
+scores = np.array([7, 9, 6, 8, 10, 7, 8, 9, 7, 8])
+
+# Calculate the mean and standard deviation
+sample_mean = np.mean(scores)
+sample_std = np.std(scores, ddof=1)  # ddof=1 for sample standard deviation
+
+# Calculate the standard error
+standard_error = stats.sem(scores)
+
+# Calculate the margin of error
+margin_of_error = standard_error * stats.t.ppf(0.975, df=len(scores)-1)
+
+# Calculate the confidence interval
+confidence_interval = (sample_mean - margin_of_error, sample_mean + margin_of_error)
+
+# Print the confidence interval
+print("Confidence Interval (95%):", confidence_interval)
+
+#output
+Confidence Interval (95%): (7.043561120599888, 8.756438879400113)
+
+
+Q.14.
+import numpy as np
+from scipy import stats
+
+# Temperature (in degrees Celsius) and Performance
+temperature = np.array([20, 22, 23, 19, 21])
+performance = np.array([8, 7, 9, 6, 8])
+
+# Perform simple linear regression
+slope, intercept, r_value, p_value, std_err = stats.linregress(temperature, performance)
+
+print("Slope (Coefficient):", slope)
+print("Intercept:", intercept)
+
+#output
+Slope (Coefficient): 0.6
+Intercept: 4.6
+
+
+Q.15.
+import numpy as np
+from scipy import stats
+
+# Preferences for Group A and Group B
+group_a = np.array([4, 3, 5, 2, 4])
+group_b = np.array([3, 2, 4, 3, 3])
+
+# Perform Mann-Whitney U test
+statistic, p_value = stats.mannwhitneyu(group_a, group_b)
+
+print("Mann-Whitney U statistic:", statistic)
+print("p-value:", p_value)
+​
+#output
+Mann-Whitney U statistic: 17.0
+p-value: 0.380836480306712
+
+
+Q.16.
+import numpy as np
+
+# Customer ages
+ages = np.array([25, 30, 35, 40, 45, 50, 55, 60, 65, 70])
+
+# Calculate the first quartile (Q1)
+q1 = np.percentile(ages, 25)
+q1 = 36.25
+
+#calculate the third quartile (Q3)
+q3 = np.percentile(ages, 75)
+q3 = 58.75
+
+#interquartile range (IQR)
+iqr = q3 - q1
+iqr = 22.5
+
+#output 
+22.5
+
+
+Q.17.
+import numpy as np
+from scipy import stats
+
+# Accuracy scores for Algorithm A, Algorithm B, and Algorithm C
+algorithm_a = np.array([0.85, 0.80, 0.82, 0.87, 0.83])
+algorithm_b = np.array([0.78, 0.82, 0.84, 0.80, 0.79])
+algorithm_c = np.array([0.90, 0.88, 0.89, 0.86, 0.87])
+
+# Perform Kruskal-Wallis test
+h_statistic, p_value = stats.kruskal(algorithm_a, algorithm_b, algorithm_c)
+
+print("Kruskal-Wallis H statistic:", h_statistic)
+print("p-value:", p_value)
+
+#output
+Kruskal-Wallis H statistic: 9.696947935368053
+p-value: 0.007840333026249539
+​
+
+Q.18.
+import numpy as np
+from scipy import stats
+
+# Price (in dollars) and Sales
+price = np.array([10, 15, 12, 8, 14])
+sales = np.array([100, 80, 90, 110, 95])
+
+# Perform simple linear regression
+slope, intercept, r_value, p_value, std_err = stats.linregress(price, sales)
+
+print("Slope (Coefficient):", slope)
+print("Intercept:", intercept)
+
+#output
+Slope (Coefficient): -5.333333333333333
+Intercept: 143.66666666666666
+
+
+Q.19.
+import numpy as np
+from scipy import stats
+
+# Satisfaction scores
+scores = np.array([7, 8, 9, 6, 8, 7, 9, 7, 8, 7])
+
+# Calculate the standard error of the mean
+standard_error = stats.sem(scores)
+
+# Print the standard error of the mean
+print("Standard Error of the Mean:", standard_error)
+
+#output
+Standard Error of the Mean: 0.30550504633038933
+
+
+Q.20.
+import numpy as np
+import statsmodels.api as sm
+
+# Advertising expenditure (in thousands) and Sales (in thousands)
+advertising_expenditure = np.array([10, 15, 12, 8, 14])
+sales = np.array([25, 30, 28, 20, 26])
+
+# Add a constant column to the input variables
+X = sm.add_constant(advertising_expenditure)
+
+# Perform multiple regression analysis
+model = sm.OLS(sales, X)
+results = model.fit()
+
+print(results.summary())
+
+#output
+ OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.767
+Model:                            OLS   Adj. R-squared:                  0.689
+Method:                 Least Squares   F-statistic:                     9.872
+Date:                Sat, 08 Jul 2023   Prob (F-statistic):             0.0516
+Time:                        14:07:36   Log-Likelihood:                -9.5288
+No. Observations:                   5   AIC:                             23.06
+Df Residuals:                       3   BIC:                             22.28
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         12.2012      4.429      2.755      0.070      -1.893      26.296
+x1             1.1524      0.367      3.142      0.052      -0.015       2.320
+==============================================================================
+Omnibus:                          nan   Durbin-Watson:                   1.136
+Prob(Omnibus):                    nan   Jarque-Bera (JB):                0.546
+Skew:                          -0.267   Prob(JB):                        0.761
+Kurtosis:                       1.471   Cond. No.                         57.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.                            
+​
+
+
+
+
+
+
+
+
+
+
